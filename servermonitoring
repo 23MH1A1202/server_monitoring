@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Monitoring Dashboard</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #ffffff;
+      margin-bottom: 30px;
+    }
+    .monitor-header {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .card {
+      background-color: #2b2b3c;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #ffa500;
+      font-size: 18px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+    }
+    .metric {
+      margin: 15px 0;
+    }
+    .metric-label {
+      color: #aaa;
+      margin-bottom: 5px;
+    }
+    .metric-value {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .settings-section {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .settings-item {
+      color: #00ffcc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="monitor-header">
+  <h1>API Monitor</h1>
+  <div>request.in/api/users/2 - Checking entry 2 minutes.</div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>ACTIVE FOR</h2>
+    <div class="metric">
+      <div class="metric-value" id="activeFor">11 hours</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>LAST CHECK</h2>
+    <div class="metric">
+      <div class="metric-value" id="lastCheck">20 seconds ago</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>LAST RESPONSE TIME</h2>
+    <div class="metric">
+      <div class="metric-value" id="responseTime">228 ms</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>CERTIFICATE EXPIRY</h2>
+    <div class="metric">
+      <div class="metric-value" id="certExpiry">Aug 28, 2025 7 PM</div>
+    </div>
+  </div>
+</div>
+
+<div class="settings-section">
+  <div class="settings-item">Status pages</div>
+  <div class="settings-item">Maintenance</div>
+  <div class="settings-item">Settings</div>
+</div>
+
+<div class="grid" style="margin-top: 30px;">
+  <div class="card">
+    <h2>Uptime</h2>
+    <div class="metric">
+      <div class="metric-label">Total Checks:</div>
+      <div class="metric-value" id="totalChecks">51</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Uptime Percentage:</div>
+      <div class="metric-value" id="uptimePercent">85 %</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>Incidents</h2>
+    <div class="metric">
+      <div class="metric-value" id="incidents">9</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>Average Response Time</h2>
+    <div class="metric">
+      <div class="metric-value" id="avgResponseTime">234 ms</div>
+      <div class="metric-label">Fair</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>Response Times</h2>
+    <div class="metric">
+      <div class="metric-value">Support</div>
+      <div class="metric-value">Discussions</div>
+      <div class="metric-value">Docs</div>
+      <div class="metric-value">Changelog</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin-top: 20px;">
+  <h2>Response U...</h2>
+  <div class="metric">
+    <div class="metric-value">Super Admin</div>
+  </div>
+</div>
+
+<script>
+  // Sample data that will rotate
+  const activeForOptions = ["11 hours", "12 hours", "11 hours 10 minutes", "11 hours 30 minutes"];
+  const lastCheckOptions = ["20 seconds ago", "30 seconds ago", "10 seconds ago", "1 minute ago"];
+  const responseTimeOptions = ["228 ms", "245 ms", "210 ms", "195 ms", "250 ms"];
+  const totalChecksOptions = ["51", "52", "53", "54"];
+  const uptimePercentOptions = ["85 %", "86 %", "85.5 %", "84 %"];
+  const incidentsOptions = ["9", "8", "10", "9"];
+  const avgResponseTimeOptions = ["234 ms", "240 ms", "230 ms", "228 ms"];
+
+  function updateMetrics() {
+    // Update active for
+    document.getElementById("activeFor").innerText = 
+      activeForOptions[Math.floor(Math.random() * activeForOptions.length)];
+    
+    // Update last check
+    document.getElementById("lastCheck").innerText = 
+      lastCheckOptions[Math.floor(Math.random() * lastCheckOptions.length)];
+    
+    // Update response time
+    document.getElementById("responseTime").innerText = 
+      responseTimeOptions[Math.floor(Math.random() * responseTimeOptions.length)];
+    
+    // Update total checks
+    document.getElementById("totalChecks").innerText = 
+      totalChecksOptions[Math.floor(Math.random() * totalChecksOptions.length)];
+    
+    // Update uptime percentage
+    document.getElementById("uptimePercent").innerText = 
+      uptimePercentOptions[Math.floor(Math.random() * uptimePercentOptions.length)];
+    
+    // Update incidents
+    document.getElementById("incidents").innerText = 
+      incidentsOptions[Math.floor(Math.random() * incidentsOptions.length)];
+    
+    // Update average response time
+    document.getElementById("avgResponseTime").innerText = 
+      avgResponseTimeOptions[Math.floor(Math.random() * avgResponseTimeOptions.length)];
+  }
+
+  // Refresh data every 10 seconds
+  setInterval(updateMetrics, 10000);
+  updateMetrics(); // initial call
+</script>
+
+</body>
+</html>
